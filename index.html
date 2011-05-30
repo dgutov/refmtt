@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Plain Text Reformatter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script type="text/javascript" src="js/reformat.js"></script>
+  </head>
+  <body>
+    <h2>Reformatting options</h2>
+    <form>
+      <table cellpadding="0">
+        <tr>
+          <td><span class="label">Line breaks allowed after:</span></td>
+          <td><span class="label">Ignore symbols:</span></td>
+        </tr>
+        <tr>
+          <td><input class="optfield" id="breaks" value="{{ breaks }}"/></td>
+          <td><input class="optfield" id="ignores" value="{{ ignores }}"/></td>
+        </tr>
+      </table>
+      <input id="preserve" type="checkbox" {% if preserve %} checked="checked"{% endif%}/>
+      Preserve lines shorter than
+      <input id="min-chars" maxlength="3" size="3" value="{{ min_chars }}"/>
+      characters
+      <p>
+        <span class="label">Remove spaces:</span><br/>
+        <input id="remove-start-spaces" type="checkbox"{% if remove_start_spaces %} checked="checked"{% endif %}/>
+        At the beginning of lines<br/>
+        <input id="remove-symbols-spaces" type="checkbox"{% if remove_symbols_spaces %} checked="checked"{% endif %}/>
+        Before characters:
+        <input id="no-space-symbols" maxlength="10" size="10" value="{{ no_space_symbols }}"/>
+      </p>
+      <p>
+        <input id="remove-empty-lines" type="checkbox"{% if remove_empty_lines %} checked="checked"{% endif %}/>
+        Remove extra empty lines: more than
+        <input id="max-empty-lines" maxlength="3" size="3" value="{{ max_empty_lines }}"/>
+        in a row
+      </p>
+      <p>
+        <input id="replace-symbols" type="checkbox"{% if replace_symbols %} checked="checked"{% endif %}/>
+        Replace symbols:
+        <input id="symbols-to-replace" value="{{ symbols_to_replace }}"/>
+      </p>
+      <p class="label">Input file:</p>
+      <input type="file" id="input" size="35"/>
+      <label id="waiter" style="display: none">Please wait...</label>
+      <input type="button" name="run" value="Run" style="float: right" onclick="reformat(this)"/>
+    </form>
+  </body>
+</html>
