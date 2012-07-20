@@ -19,7 +19,7 @@ class MainPage(webapp.RequestHandler):
           'remove_empty_lines' : True,
           'max_empty_lines' : 2,
           'replace_symbols' : True,
-          'symbols_to_replace' : cgi.escape('‘’`=>\', “”=>", –—=>--', True)
+          'symbols_to_replace' : cgi.escape('‘’`=>\', “”=>", –—=>--, …=>...', True)
         }
         path = os.path.join(os.path.dirname(__file__), "index.html")
         self.response.headers['Content-Type'] = 'text/html'
